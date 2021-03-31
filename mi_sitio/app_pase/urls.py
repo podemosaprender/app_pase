@@ -25,5 +25,5 @@ from .models import Lugar
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
-    url(r'^data.geojson$', GeoJSONLayerView.as_view(model=Lugar, properties=('nombre', 'descripcion', 'foto_url')), name='data')
+    url(r'^data.geojson$', GeoJSONLayerView.as_view(model=Lugar, geometry_field='latlng', properties=('nombre', 'descripcion', 'foto_url')), name='data')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
